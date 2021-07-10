@@ -1,12 +1,11 @@
 <template>
   <div class="post">
     <div class="post--title">"{{ title }}"</div>
-    <div>{{ title }}</div>
-    <div>{{ body }}</div>
+    <div>{{ priorityLabel }}{{ priority }}</div>
+    <div>{{ assignedToLabel }}{{ assigned }}</div>
 
     <div class="post--info">
-      <span>{{userIdLabel}} {{ userId }} -  </span>
-      <span>{{postIdLabel}}{{ postId }}</span>
+      <span>{{todoIdLabel}}{{ postId }}</span>
     </div>
   </div>
 </template>
@@ -25,22 +24,25 @@ export default {
 
   data() {
     return {
-      postIdLabel: 'Post #',
-      userIdLabel: 'User Id:',
+      assignedToLabel: 'Assigned to: ',
+      todoIdLabel: 'Task #',
+      priorityLabel: 'Priority: ',
     };
   },
 
   computed: {
-    body() {
-      return pathOr('N/A', ['postData', 'body'], this);
+    assigned() {
+      return pathOr('N/A', ['postData', 'assigned'], this);
     },
+
     postId() {
       return pathOr('N/A', ['postData', 'id'], this);
     },
 
-    userId() {
-      return pathOr('N/A', ['postData', 'userId'], this);
+    priority() {
+      return pathOr('N/A', ['postData', 'priority'], this);
     },
+
     title() {
       return pathOr('N/A', ['postData', 'title'], this);
     },

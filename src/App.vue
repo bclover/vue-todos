@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <div class="flex-container">
-      <SideBar />
-      <!-- TODO: implement preloader animation -->
-      <LeftColumn />
+<!--      <SideBar />-->
+<!--      <LeftColumn />-->
       <RightColumn />
     </div>
   </div>
@@ -20,7 +19,7 @@ export default {
   components: { LeftColumn, RightColumn, SideBar },
   data() {
     return {
-      allPosts: [],
+      todosUrl: [],
       currentUserId: 1,
       currentUserPosts: [],
       loading: true,
@@ -31,7 +30,7 @@ export default {
   },
 
   async created() {
-    await this.$store.dispatch('getAllPosts');
+    await this.$store.dispatch('getAllTodos');
   },
 };
 </script>
@@ -40,7 +39,7 @@ export default {
 
 html {}
 body {
-  background-color: #2b2112;
+  background-color: #fafafa;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   height: 100vh;

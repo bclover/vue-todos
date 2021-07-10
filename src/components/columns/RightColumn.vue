@@ -3,7 +3,7 @@
     <Preloader v-if="loading" :msg="loadingMessage" />
 
     <div v-if="!loading" class="num-of-posts">
-      {{ otherPostsLabel }} {{ totalOtherPosts }}
+      {{ todosLabel }} {{ totalOtherPosts }}
     </div>
 
     <div v-if="!loading" class="other-posts">
@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      loadingMessage: 'Loading all other posts...',
-      otherPostsLabel: 'Other Posts:',
+      loadingMessage: 'Loading todos...',
+      todosLabel: 'Total Number of "To Dos":',
     };
   },
 };

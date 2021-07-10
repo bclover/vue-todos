@@ -28,7 +28,7 @@ const successInterceptor = response => response;
 
 // axios instance
 const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'https://my-json-server.typicode.com/bclover/todos',
   withCredentials: false,
 });
 
@@ -37,14 +37,14 @@ api.interceptors.response.use(successInterceptor, errorInterceptor);
 
 
 // Valid API endpoint (use this to load valid data)
-const postsUrl = '/posts';
+const todosUrl = '/data';
 
 // Invalid API endpoint (use this to simulate an error)
-// const postsUrl = '/badURL';
+// const todosUrl = '/badURL';
 
 // api methods
 export default {
-  getPosts() {
-    return api.get(postsUrl);
+  getTodos() {
+    return api.get(todosUrl);
   },
 };

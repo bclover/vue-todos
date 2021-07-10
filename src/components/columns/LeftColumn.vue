@@ -31,9 +31,9 @@ export default {
   },
   data() {
     return {
-      currentUserPostsLabel: 'User\'s Posts:',
+      currentUserPostsLabel: 'User\'s Todos:',
       currentUserIdLabel: 'User Id:',
-      loadingMessage: 'Loading the user\'s posts...',
+      loadingMessage: 'Loading the user\'s todos...',
     };
   },
 

@@ -1,8 +1,8 @@
 {
-  "name": "vue-exercise",
+  "name": "vue-todos",
   "version": "1.0.0",
-  "description": "Bryan Clover's Vue Exercise",
-  "author": "Bryan Clover <bcloverjustice@bignerdranch.com>",
+  "description": "Bryan Clover's Vue Todo Example",
+  "author": "Bryan Clover <bclover09@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

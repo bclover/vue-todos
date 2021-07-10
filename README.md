@@ -1,19 +1,29 @@
-# Vue Exercise
+# Frontend Fun Times Exercise
 
-**Please limit your time working on this exercise to four hours.**
+The data for this exercise can be found here:
+<https://my-json-server.typicode.com/bclover/todos/data>
 
-Please submit a pull request to this repo implementing the following feature:
+### The Goal:
+Create a list where a user can categorize their todo items into three categories:
+- life changing
+- important
+- meh
 
-Create a Vuex module and component(s) to display blog post data from the following web service:
+#### Additional Requirements:
+- List todo items in readable manner (grid, list, etc...) with the appropriate
+  priority displayed
+- Add a new item to the list with priority
+- Remove an item from the list
+- Clear the entire list
 
-<https://jsonplaceholder.typicode.com/posts>
+#### Bonus Ideas:
+- Add the ability to edit existing items
+- Save to local storage and reload when entering the page
+- Add unit tests
+- Add E2E testing
+- Add ability to sort by priority
 
-- Display the posts for the current user in the left column, and posts for all other users in the right column. For the purposes of this exercise, you can hard-code the “current user ID” to 1.
-- Handle both loading and error states.
-- Unit test both the Vuex module and component(s). Cover all the important behavior of the code with tests, and get 100% test coverage for all metrics shown in the unit test output. For the purposes of this exercise, don't worry about doing any end-to-end testing.
-- Add enough CSS to get the left/right column layout and make it look clean, but don’t worry about too fancy styling.
-
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies

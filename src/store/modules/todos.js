@@ -2,7 +2,7 @@ import find from 'ramda/src/filter';
 import propEq from 'ramda/src/propEq';
 import propOr from 'ramda/src/propOr';
 import without from 'ramda/src/without';
-import PostsService from '../../services/PostsService';
+import TodosService from '../../services/TodosService';
 
 export const state = {
   allPosts: [],
@@ -12,13 +12,13 @@ export const state = {
 };
 
 export const actions = {
-  async getAllPosts(context) {
+  async getAllTodos(context) {
     context.commit('SET_LOADING_STATUS', true);
-    const response = await PostsService.getPosts();
+    const response = await TodosService.getTodos();
     const allPosts = propOr([], 'data', response);
-    context.commit('SET_ALL_POSTS', allPosts);
-    context.commit('SET_USER_POSTS');
-    context.commit('SET_OTHER_POSTS');
+    context.commit('SET_ALL_TODOS', allPosts);
+    context.commit('SET_USER_TODOS');
+    context.commit('SET_OTHER_TODOS');
     context.commit('SET_LOADING_STATUS', false);
   },
 };
@@ -35,13 +35,13 @@ export const mutations = {
   SET_LOADING_STATUS(state, status) {
     state.loadingStatus = status;
   },
-  SET_ALL_POSTS(state, posts) {
+  SET_ALL_TODOS(state, posts) {
     state.allPosts = posts;
   },
-  SET_OTHER_POSTS(state) {
+  SET_OTHER_TODOS(state) {
     state.otherPosts = without(state.userPosts, state.allPosts);
   },
-  SET_USER_POSTS(state) {
+  SET_USER_TODOS(state) {
     state.userPosts = find(propEq('userId', 1), state.allPosts);
   },
 };

@@ -1,9 +1,9 @@
 <template>
   <div class="logo-container">
-    <h2 class="white--text">
+    <h2 class="blue--text">
       {{ candidateName }}
     </h2>
-    <h3 class="white--text">
+    <h3 class="blue--text">
       {{ candidateTitle }}
     </h3>
   </div>
@@ -36,7 +36,7 @@ export default {
   width: 18rem;
 }
 
-.white--text {
-  color: whitesmoke;
+.blue--text {
+  color: #214395;
 }
 </style>
