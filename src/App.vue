@@ -2,7 +2,6 @@
   <div id="app">
     <div class="flex-container">
 <!--      <SideBar />-->
-<!--      <LeftColumn />-->
       <RightColumn />
     </div>
   </div>
@@ -10,13 +9,12 @@
 
 <script>
 
-import LeftColumn from './components/columns/LeftColumn';
 import RightColumn from './components/columns/RightColumn';
 import SideBar from './components/columns/SideBar';
 
 export default {
   name: 'App',
-  components: { LeftColumn, RightColumn, SideBar },
+  components: { RightColumn, SideBar },
   data() {
     return {
       todosUrl: [],

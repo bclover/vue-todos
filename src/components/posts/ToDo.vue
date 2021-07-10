@@ -14,9 +14,9 @@
 import pathOr from 'ramda/src/pathOr';
 
 export default {
-  name: 'Post',
+  name: 'ToDo',
   props: {
-    postData: {
+    todoData: {
       type: Object,
       required: true,
     },
@@ -25,26 +25,26 @@ export default {
   data() {
     return {
       assignedToLabel: 'Assigned to: ',
-      todoIdLabel: 'Task #',
+      todoIdLabel: 'Task ',
       priorityLabel: 'Priority: ',
     };
   },
 
   computed: {
     assigned() {
-      return pathOr('N/A', ['postData', 'assigned'], this);
+      return pathOr('N/A', ['todoData', 'assigned'], this);
     },
 
     postId() {
-      return pathOr('N/A', ['postData', 'id'], this);
+      return pathOr('N/A', ['todoData', 'id'], this);
     },
 
     priority() {
-      return pathOr('N/A', ['postData', 'priority'], this);
+      return pathOr('N/A', ['todoData', 'priority'], this);
     },
 
     title() {
-      return pathOr('N/A', ['postData', 'title'], this);
+      return pathOr('N/A', ['todoData', 'title'], this);
     },
   },
 

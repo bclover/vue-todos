@@ -7,7 +7,7 @@
     </div>
 
     <div v-if="!loading" class="other-posts">
-      <Post v-for="post in otherPosts" :key="post.id" :post-data="post" />
+      <ToDo v-for="todo in otherPosts" :key="todo.id" :todo-data="todo" />
     </div>
 
   </div>
@@ -15,12 +15,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Post from '../../components/posts/Post';
 import Preloader from '../Preloader';
+import ToDo from '../posts/ToDo';
 
 export default {
   name: 'RightColumn',
-  components: { Post, Preloader },
+  components: { Preloader, ToDo },
   computed: {
     ...mapGetters(['loading', 'otherPosts', 'totalOtherPosts']),
   },
@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .right-col {
-  background-color: #658193;
+  background-color: #214395;
   border-radius: 0.5rem;
   margin: 1rem;
   overflow: hidden;
