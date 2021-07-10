@@ -49,5 +49,6 @@ module.exports = {
     'no-unused-expressions': 'off',
     'no-shadow': 'off',
     'no-use-before-define': 'off',
+    "indent": ["error", 2]
   }
 }

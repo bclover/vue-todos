@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       loadingMessage: 'Loading todos...',
-      todosLabel: 'Total Todos":',
+      todosLabel: 'Total Todos:',
     };
   },
 };

@@ -1,8 +1,18 @@
 <template>
   <div class="right-col">
     <v-btn
+      :disabled="totalNumTodos !== 8"
+      depressed
+      class="ml-3"
+      color="secondary"
+      @click="addTodo"
+    >
+      Add
+    </v-btn>
+    <v-btn
       :disabled="totalNumTodos === 0"
       depressed
+      color="secondary"
       @click="clearAllTodos"
     >
       Clear All
@@ -11,6 +21,7 @@
       :disabled="totalNumTodos > 0"
       depressed
       class="ml-3"
+      color="secondary"
       @click="reloadTodos"
     >
       Reload
@@ -32,6 +43,15 @@ export default {
     };
   },
   methods: {
+    async addTodo() {
+      const newTodo = {
+        id: 9,
+        title: 'Add client-side validation.',
+        priority: 'Life Changing',
+        assigned: 'Bryan Clover',
+      };
+      await this.$store.dispatch('addTodo', newTodo);
+    },
     async clearAllTodos() {
       await this.$store.dispatch('clearAllTodos');
     },
@@ -44,7 +64,7 @@ export default {
 
 <style scoped>
 .right-col {
-  background-color: #214395;
+  background-color: whitesmoke;
   border-radius: 0.5rem;
   margin: 1rem;
   overflow: hidden;
