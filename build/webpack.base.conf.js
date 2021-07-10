@@ -85,9 +85,10 @@ module.exports = {
             // Requires sass-loader@^7.0.0
             options: {
               implementation: require('sass'),
-              fiber: require('fibers'),
-              indentedSyntax: true // optional
-            }
+              sassOptions: {
+                indentedSyntax: true // optional
+              },
+            },
           },
         ],
       },

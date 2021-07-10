@@ -1,20 +1,24 @@
 <template>
+  <v-app>
   <div id="app">
     <div class="flex-container">
 <!--      <SideBar />-->
+      <ListOfTodos />
       <RightColumn />
     </div>
   </div>
+  </v-app>
 </template>
 
 <script>
 
+import ListOfTodos from './components/columns/ListOfTodos';
 import RightColumn from './components/columns/RightColumn';
 import SideBar from './components/columns/SideBar';
 
 export default {
   name: 'App',
-  components: { RightColumn, SideBar },
+  components: { ListOfTodos, RightColumn, SideBar },
   data() {
     return {
       todosUrl: [],

@@ -1,27 +1,33 @@
 <template>
   <div class="right-col">
-    <v-btn depressed @click="clearAllTodos">Clear All</v-btn>
+    <Preloader v-if="loading" :msg="loadingMessage" />
+
+    <div v-if="!loading" class="num-of-posts">
+      {{ todosLabel }} {{ totalOtherPosts }}
+    </div>
+
+    <div v-if="!loading" class="other-posts">
+      <ToDo v-for="todo in otherPosts" :key="todo.id" :todo-data="todo" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import Preloader from '../Preloader';
+import ToDo from '../posts/ToDo';
 
 export default {
-  name: 'RightColumn',
-  components: { },
+  name: 'ListOfTodos',
+  components: { Preloader, ToDo },
   computed: {
     ...mapGetters(['loading', 'otherPosts', 'totalOtherPosts']),
   },
   data() {
     return {
+      loadingMessage: 'Loading todos...',
+      todosLabel: 'Total Number of "To Dos":',
     };
-  },
-  methods: {
-    clearAllTodos() {
-      // eslint-disable-next-line no-console
-      console.log('clear');
-    },
   },
 };
 </script>
