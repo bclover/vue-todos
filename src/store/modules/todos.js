@@ -1,47 +1,38 @@
-import find from 'ramda/src/filter';
-import propEq from 'ramda/src/propEq';
 import propOr from 'ramda/src/propOr';
-import without from 'ramda/src/without';
 import TodosService from '../../services/TodosService';
 
 export const state = {
-  allPosts: [],
+  todos: [],
   loadingStatus: false,
-  otherPosts: [],
-  userPosts: [],
 };
 
 export const actions = {
+  clearAllTodos(context) {
+    context.commit('CLEAR_TODOS');
+  },
   async getAllTodos(context) {
     context.commit('SET_LOADING_STATUS', true);
     const response = await TodosService.getTodos();
-    const allPosts = propOr([], 'data', response);
-    context.commit('SET_ALL_TODOS', allPosts);
-    context.commit('SET_USER_TODOS');
-    context.commit('SET_OTHER_TODOS');
+    const todos = propOr([], 'data', response);
+    context.commit('SET_ALL_TODOS', todos);
     context.commit('SET_LOADING_STATUS', false);
   },
 };
 
 export const getters = {
   loading: state => state.loadingStatus,
-  otherPosts: state => state.otherPosts,
-  totalOtherPosts: state => state.otherPosts.length,
-  totalUserPosts: state => state.userPosts.length,
-  userPosts: state => state.userPosts,
+  todos: state => state.todos,
+  totalNumTodos: state => state.todos.length,
 };
 
 export const mutations = {
+  CLEAR_TODOS(state) {
+    state.todos = [];
+  },
   SET_LOADING_STATUS(state, status) {
     state.loadingStatus = status;
   },
-  SET_ALL_TODOS(state, posts) {
-    state.allPosts = posts;
-  },
-  SET_OTHER_TODOS(state) {
-    state.otherPosts = without(state.userPosts, state.allPosts);
-  },
-  SET_USER_TODOS(state) {
-    state.userPosts = find(propEq('userId', 1), state.allPosts);
+  SET_ALL_TODOS(state, todos) {
+    state.todos = todos;
   },
 };

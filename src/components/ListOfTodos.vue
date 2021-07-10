@@ -3,30 +3,30 @@
     <Preloader v-if="loading" :msg="loadingMessage" />
 
     <div v-if="!loading" class="num-of-posts">
-      {{ todosLabel }} {{ totalOtherPosts }}
+      <span class="white--text">{{ todosLabel }} {{ totalNumTodos }}</span>
     </div>
 
     <div v-if="!loading" class="other-posts">
-      <ToDo v-for="todo in otherPosts" :key="todo.id" :todo-data="todo" />
+      <ToDo v-for="todo in todos" :key="todo.id" :todo-data="todo" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import Preloader from '../Preloader';
-import ToDo from '../posts/ToDo';
+import Preloader from './Preloader';
+import ToDo from './ToDo';
 
 export default {
   name: 'ListOfTodos',
   components: { Preloader, ToDo },
   computed: {
-    ...mapGetters(['loading', 'otherPosts', 'totalOtherPosts']),
+    ...mapGetters(['loading', 'todos', 'totalNumTodos']),
   },
   data() {
     return {
       loadingMessage: 'Loading todos...',
-      todosLabel: 'Total Number of "To Dos":',
+      todosLabel: 'Total Todos":',
     };
   },
 };

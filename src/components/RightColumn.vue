@@ -1,6 +1,20 @@
 <template>
   <div class="right-col">
-    <v-btn depressed @click="clearAllTodos">Clear All</v-btn>
+    <v-btn
+      :disabled="totalNumTodos === 0"
+      depressed
+      @click="clearAllTodos"
+    >
+      Clear All
+    </v-btn>
+    <v-btn
+      :disabled="totalNumTodos > 0"
+      depressed
+      class="ml-3"
+      @click="reloadTodos"
+    >
+      Reload
+    </v-btn>
   </div>
 </template>
 
@@ -11,16 +25,18 @@ export default {
   name: 'RightColumn',
   components: { },
   computed: {
-    ...mapGetters(['loading', 'otherPosts', 'totalOtherPosts']),
+    ...mapGetters(['loading', 'todos', 'totalNumTodos']),
   },
   data() {
     return {
     };
   },
   methods: {
-    clearAllTodos() {
-      // eslint-disable-next-line no-console
-      console.log('clear');
+    async clearAllTodos() {
+      await this.$store.dispatch('clearAllTodos');
+    },
+    async reloadTodos() {
+      await this.$store.dispatch('getAllTodos');
     },
   },
 };

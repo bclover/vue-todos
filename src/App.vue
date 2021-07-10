@@ -12,9 +12,9 @@
 
 <script>
 
-import ListOfTodos from './components/columns/ListOfTodos';
-import RightColumn from './components/columns/RightColumn';
-import SideBar from './components/columns/SideBar';
+import ListOfTodos from './components/ListOfTodos';
+import RightColumn from './components/RightColumn';
+import SideBar from './components/SideBar';
 
 export default {
   name: 'App',
