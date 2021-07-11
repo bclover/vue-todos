@@ -1,8 +1,10 @@
 <template>
-  <v-container class="todo">
-    <v-row>
-      <v-col cols="12">
-        <!-- title -->
+  <v-container class="mx-0 my-4 pa-0 todo">
+    <v-row class="ma-0 pa-2">
+
+      <v-col class="ma-0 pa-0 pr-0" cols="12">
+
+        <!-- TITLE OF TO DO -->
         <div class="todo--title">
           To Do #{{ todoId }}: "{{ title }}"
           <v-btn
@@ -14,16 +16,17 @@
           </v-btn>
         </div>
 
-        <!-- priority -->
+        <!-- PRIORITY -->
         <div>
           {{ priorityLabel }} <span :class="priorityClass">{{ priority }}</span>
         </div>
 
 
-        <!-- assigned -->
+        <!-- ASSIGNED TO -->
         <div class="todo--info">
           <span>{{assignedToLabel}}{{ assigned }}</span>
         </div>
+
       </v-col>
     </v-row>
 
@@ -32,6 +35,8 @@
 
 <script>
 import pathOr from 'ramda/src/pathOr';
+import propOr from 'ramda/src/propOr';
+import { REMOVE_TODO } from '../store/constants/actions';
 
 export default {
   name: 'ToDo',
@@ -79,7 +84,10 @@ export default {
 
   methods: {
     async removeTodo() {
-      await this.$store.dispatch('removeTodo', this.todoData.id);
+      const todoToRemove = propOr(null, 'id', this.todoData);
+      if (todoToRemove) {
+        await this.$store.dispatch(REMOVE_TODO, this.todoData.id);
+      }
     },
   },
 };
@@ -89,15 +97,12 @@ export default {
 .todo {
   background-color: whitesmoke;
   border-radius: 0.5rem;
-  margin: 1rem 0;
   opacity: .75;
-  padding: 0.5rem;
 }
 
 .todo--info {
   color: grey;
   font-size: 0.8rem;
-  margin: 1rem 0 0;
   text-align: right;
 }
 
@@ -105,7 +110,6 @@ export default {
   color: grey;
   font-size: 1rem;
   font-weight: bold;
-  margin: 1rem 0 0;
   text-align: right;
 }
 
@@ -114,6 +118,5 @@ export default {
   font-size: 1.25rem;
   font-weight: bold;
   justify-content: space-between;
-  margin: 0.5rem 0;
 }
 </style>

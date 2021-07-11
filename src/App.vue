@@ -1,12 +1,23 @@
 <template>
-  <v-app>
-  <div id="app">
-    <div class="flex-container">
-<!--      <SideBar />-->
-      <ListOfTodos />
-      <RightColumn />
-    </div>
-  </div>
+  <v-app id="app">
+    <v-container fluid class="ma-0 pa-3 main">
+
+      <v-row class="ma-0 pa-0">
+        <v-col class="ma-0 pa-0" cols="12">
+          Test
+        </v-col>
+      </v-row>
+
+      <v-row class="ma-0 pa-0">
+        <v-col class="ma-0 pa-0" cols="6">
+          <ListOfTodos />
+        </v-col>
+        <v-col class="ma-0 pa-0" cols="6">
+          <RightColumn />
+        </v-col>
+      </v-row>
+
+    </v-container>
   </v-app>
 </template>
 
@@ -14,25 +25,14 @@
 
 import ListOfTodos from './components/ListOfTodos';
 import RightColumn from './components/RightColumn';
-import SideBar from './components/SideBar';
+import { GET_ALL_TODOS } from './store/constants/actions';
 
 export default {
   name: 'App',
-  components: { ListOfTodos, RightColumn, SideBar },
-  data() {
-    return {
-      todosUrl: [],
-      currentUserId: 1,
-      currentUserPosts: [],
-      loading: true,
-      otherPosts: [],
-      rawData: [],
-      totalNumOfPosts: null,
-    };
-  },
+  components: { ListOfTodos, RightColumn },
 
   async created() {
-    await this.$store.dispatch('getAllTodos');
+    await this.$store.dispatch(GET_ALL_TODOS);
   },
 };
 </script>
@@ -47,10 +47,8 @@ body {
   height: 100vh;
   overflow-y: hidden;
 }
-.flex-container {
-  display: flex;
-  flex-direction: row;
+.main {
   height: 96vh;
-  margin: 1rem;
+  overflow-y: hidden;
 }
 </style>

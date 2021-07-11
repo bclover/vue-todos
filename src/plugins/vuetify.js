@@ -11,7 +11,7 @@ const opts = {
       light: {
         primary: '#214395',
         secondary: '#f96700',
-        smoke: 'F5F5F5',
+        tertiary: '#F5F5F5',
       },
     },
   },

@@ -1,15 +1,25 @@
 <template>
-  <div class="right-col">
-    <Preloader v-if="loading" :msg="loadingMessage" />
+  <v-container class="ma-0 pa-0">
 
-    <div v-if="!loading" class="num-of-posts">
-      <span class="white--text">{{ todosLabel }} {{ totalNumTodos }}</span>
-    </div>
+    <v-row class="ma-0 pa-0 num-of-todos">
+      <v-col class="secondary--text ma-0 pa-0" cols="6">
+        {{ listLabel }}
+      </v-col>
+      <v-col class="secondary--text ma-0 pa-0 text-right" cols="6">
+        {{countLabel }} {{ totalNumTodos }}
+      </v-col>
+    </v-row>
 
-    <div v-if="!loading" class="other-posts">
-      <ToDo v-for="todo in todos" :key="todo.id" :todo-data="todo" />
-    </div>
-  </div>
+    <v-row class="ma-0 pb-5 px-3 todos-container">
+      <v-col v-if="loading"  cols="12">
+        <Preloader :msg="loadingMessage" />
+      </v-col>
+
+      <v-col v-if="!loading" class="ma-0 pa-0 pb-3 todos" cols="12">
+          <ToDo v-for="todo in todos" :key="todo.id" :todo-data="todo" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -25,30 +35,30 @@ export default {
   },
   data() {
     return {
-      loadingMessage: 'Loading todos...',
-      todosLabel: 'Total Todos:',
+      countLabel: 'Total: ',
+      loadingMessage: 'Loading To Dos...',
+      listLabel: 'A List of Engineering Tasks:',
     };
   },
 };
 </script>
 
 <style scoped>
-.right-col {
+
+.num-of-todos {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.todos {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+.todos-container {
   background-color: #214395;
   border-radius: 0.5rem;
-  margin: 1rem;
-  overflow: hidden;
-  padding: 1rem;
-  width: 50%;
-}
-
-.num-of-posts {
-  margin: 0 0 .5rem;
-}
-
-.other-posts {
-  height: 100%;
-  overflow-x: hidden;
+  max-height: 92vh !important;
   overflow-y: scroll;
 }
 

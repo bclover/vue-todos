@@ -1,14 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as todos from './modules/todos';
-import * as user from './modules/user';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
     todos,
-    user,
   },
 
   state: {
