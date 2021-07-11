@@ -2,10 +2,10 @@
   <v-container class="ma-0 pa-0">
 
     <v-row class="ma-0 pa-0 num-of-todos">
-      <v-col class="secondary--text ma-0 pa-0" cols="6">
+      <v-col class="secondary--text ma-0 pa-0 pl-3" cols="6">
         {{ listLabel }}
       </v-col>
-      <v-col class="secondary--text ma-0 pa-0 text-right" cols="6">
+      <v-col class="secondary--text ma-0 pa-0 pr-3 text-right" cols="6">
         {{countLabel }} {{ totalNumTodos }}
       </v-col>
     </v-row>
@@ -15,10 +15,22 @@
         <Preloader :msg="loadingMessage" />
       </v-col>
 
-      <v-col v-if="!loading" class="ma-0 pa-0 pb-3 todos" cols="12">
-          <ToDo v-for="todo in todos" :key="todo.id" :todo-data="todo" />
+      <v-col v-if="!loading" class="ma-0 pa-0 pb-3" cols="12">
+        <ToDo v-for="todo in todos" :key="todo.id" :todo-data="todo" />
+      </v-col>
+
+      <v-col
+        v-if="todos.length === 0"
+        class="ma-0 pa-0 pb-3 white--text"
+        cols="12"
+      >
+        <div v-if="!loading" class="text-h5 text-center">
+          {{ noTasks }}<br>
+          {{ reload }}
+        </div>
       </v-col>
     </v-row>
+
   </v-container>
 </template>
 
@@ -38,6 +50,8 @@ export default {
       countLabel: 'Total: ',
       loadingMessage: 'Loading To Dos...',
       listLabel: 'A List of Engineering Tasks:',
+      noTasks: 'No tasks exist....',
+      reload: 'Click the "RELOAD" button to try loading some!',
     };
   },
 };
@@ -50,15 +64,11 @@ export default {
   font-size: 1.25rem;
 }
 
-.todos {
-  height: 90%;
-  overflow-y: scroll;
-}
-
 .todos-container {
   background-color: #214395;
+
   border-radius: 0.5rem;
-  max-height: 92vh !important;
+  height: 92vh !important;
   overflow-y: scroll;
 }
 

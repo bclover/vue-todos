@@ -1,38 +1,43 @@
 <template>
-  <div class="right-col">
+  <v-container>
 
-    <!-- ADD A TO DO -->
-    <v-btn
-      :disabled="totalNumTodos !== DEFAULT_NUM_OF_TODOS"
-      depressed
-      class="ml-3"
-      color="secondary"
-      @click="addTodo"
-    >
-      {{ btnAdd }}
-    </v-btn>
+    <v-row class="ma-5 pa-3 right-col" no-gutters>
+      <v-col class="ma-0 pa-0" cols="12">
+      <!-- ADD A TO DO -->
+      <v-btn
+        :disabled="totalNumTodos !== DEFAULT_NUM_OF_TODOS"
+        depressed
+        color="secondary"
+        @click="addTodo"
+      >
+        {{ btnAdd }}
+      </v-btn>
 
-    <!-- CLEAR ALL TO DOS -->
-    <v-btn
-      :disabled="totalNumTodos === 0"
-      depressed
-      color="secondary"
-      @click="clearAllTodos"
-    >
-      {{ btnClear }}
-    </v-btn>
+      <!-- CLEAR ALL TO DOS -->
+      <v-btn
+        :disabled="totalNumTodos === 0"
+        depressed
+        class="ml-3"
+        color="secondary"
+        @click="clearAllTodos"
+      >
+        {{ btnClear }}
+      </v-btn>
 
-    <!-- RELOAD ALL TO DOS -->
-    <v-btn
-      :disabled="totalNumTodos > 0"
-      depressed
-      class="ml-3"
-      color="secondary"
-      @click="reloadTodos"
-    >
-      {{ btnReload }}
-    </v-btn>
-  </div>
+      <!-- RELOAD ALL TO DOS -->
+      <v-btn
+        :disabled="totalNumTodos > 0"
+        depressed
+        class="ml-3"
+        color="secondary"
+        @click="reloadTodos"
+      >
+        {{ btnReload }}
+      </v-btn>
+      </v-col>
+    </v-row>
+
+  </v-container>
 </template>
 
 <script>
@@ -84,8 +89,6 @@ export default {
 .right-col {
   background-color: whitesmoke;
   border-radius: 0.5rem;
-  margin: 1rem;
-  overflow: hidden;
-  padding: 1rem;
+  min-height: 96vh !important;
 }
 </style>
