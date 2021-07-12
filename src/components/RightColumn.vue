@@ -16,7 +16,7 @@
 
         <!-- RELOAD ALL TO DOS -->
         <v-btn
-          :disabled="totalNumTodos > 0"
+          :disabled="reloadBtnInactive"
           depressed
           class="ml-3"
           color="secondary"
@@ -66,7 +66,8 @@ export default {
   computed: {
     ...mapGetters(['loading', 'todos', 'totalNumTodos']),
     todoExists() {
-      return find(propEq('id', 11), this.todos);
+      const todoExists = find(propEq('id', 11), this.todos);
+      return todoExists !== undefined;
     },
   },
   data() {
@@ -81,6 +82,7 @@ export default {
         priority: 'Life Changing',
         assigned: 'Bryan Clover',
       },
+      reloadBtnInactive: true,
     };
   },
   methods: {
@@ -88,16 +90,22 @@ export default {
     // ADD A TO DO
     async addTodo() {
       await this.$store.dispatch(ADD_TODO, this.newTodo);
+      this.showReloadBtn();
     },
 
     // REMOVE ALL
     async clearAllTodos() {
       await this.$store.dispatch(CLEAR_ALL_TODOS);
+      this.showReloadBtn();
     },
 
     // RELOAD
     async reloadTodos() {
       await this.$store.dispatch(GET_ALL_TODOS);
+    },
+
+    showReloadBtn() {
+      this.reloadBtnInactive = false;
     },
   },
 };
