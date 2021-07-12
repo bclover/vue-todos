@@ -33,7 +33,6 @@
           </span>
           Priority:
           <span class="error--text">{{ newTodo.priority }}</span><br>
-          </div>
         </div>
         <div>
           <!-- ADD A TO DO -->
