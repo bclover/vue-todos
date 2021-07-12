@@ -5,7 +5,7 @@
       <v-col class="ma-0 pa-0" cols="12">
       <!-- ADD A TO DO -->
       <v-btn
-        :disabled="totalNumTodos !== DEFAULT_NUM_OF_TODOS"
+        :disabled="todoExists"
         depressed
         color="secondary"
         @click="addTodo"
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import find from 'ramda/src/find';
+import propEq from 'ramda/src/propEq';
 import { mapGetters } from 'vuex';
 import { DEFAULT_NUM_OF_TODOS } from '../constants/misc';
 import { ADD_TODO, CLEAR_ALL_TODOS, GET_ALL_TODOS } from '../store/constants/actions';
@@ -50,6 +52,9 @@ export default {
   components: { },
   computed: {
     ...mapGetters(['loading', 'todos', 'totalNumTodos']),
+    todoExists() {
+      return find(propEq('id', 11), this.todos);
+    },
   },
   data() {
     return {

@@ -34,7 +34,7 @@ export default {
   components: { ListOfTodos, RightColumn },
   data() {
     return {
-      title: 'Welcome to the Frontend Fun Exercise',
+      title: 'Frontend Fun Exercise',
     };
   },
 
